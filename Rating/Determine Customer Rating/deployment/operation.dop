@@ -4,4 +4,13 @@
   <uuid>6b3edfa6-7a95-4bdb-9f46-6641a9eb4760</uuid>
   <decisionModel href="../rules/decisionModel.dmo#1b39fd7a-3667-474d-9cf8-421fb4ab0a8d"/>
   <targetRuleProject href="../../Determine%20Customer%20Rating#30726029-0804-4371-89e9-bf8067143c1c"/>
+  <tags key="operationDescription">
+    <value><![CDATA["Rating-Operation"]]></value>
+  </tags>
+  <tags key="operationName">
+    <value><![CDATA["Determine-Customer-Rating"]]></value>
+  </tags>
+  <tags key="exposedAtRuntime">
+    <value><![CDATA[true]]></value>
+  </tags>
 </com.ibm.rules.studio.model.decisionservice:Operation>
