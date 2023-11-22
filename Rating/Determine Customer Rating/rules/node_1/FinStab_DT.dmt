@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ilog.rules.studio.model.dt:DecisionTable xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ilog.rules.studio.model.dt="http://ilog.rules.studio/model/dt.ecore">
+  <name>FinStab_DT</name>
+  <uuid>6759b795-ea2a-4f8f-aecb-fe2dad0a9702</uuid>
+  <locale>en_US</locale>
+  <definition><DT xmlns="http://schemas.ilog.com/Rules/7.0/DecisionTable" Version="7.0">
+    <Body>
+        <Properties>
+            <Property Name="UI.MediaType"><![CDATA[Web]]></Property>
+            <Property Name="UI.RenderBoolean" Type="xs:boolean"><![CDATA[true]]></Property>
+        </Properties>
+        <Structure>
+            <ConditionDefinitions>
+                <ConditionDefinition Id="C0">
+                    <ExpressionDefinition>
+                        <Text><![CDATA[YrsInBusiness is at least <min> and less than <max>]]></Text>
+                    </ExpressionDefinition>
+                </ConditionDefinition>
+                <ConditionDefinition Id="C1">
+                    <ExpressionDefinition>
+                        <Text><![CDATA[NbrOfBankruptcies is at least <min> and less than <max>]]></Text>
+                    </ExpressionDefinition>
+                </ConditionDefinition>
+                <ConditionDefinition Id="C2">
+                    <ExpressionDefinition>
+                        <Text><![CDATA[YrsAtCurrAddr is at least <min> and less than <max>]]></Text>
+                    </ExpressionDefinition>
+                </ConditionDefinition>
+            </ConditionDefinitions>
+            <ActionDefinitions>
+                <ActionDefinition Id="A0">
+                    <ExpressionDefinition>
+                        <Text><![CDATA[set decision to <a string>]]></Text>
+                    </ExpressionDefinition>
+                </ActionDefinition>
+            </ActionDefinitions>
+        </Structure>
+        <Contents>
+            <Partition DefId="C0">
+                <Condition>
+                    <Expression>
+                        <Text><![CDATA[<a number> is less than <a number>]]></Text>
+                        <Param><![CDATA[1]]></Param>
+                    </Expression>
+                    <ActionSet>
+                        <Action DefId="A0">
+                            <Expression>
+                                <Param><![CDATA["Poor"]]></Param>
+                            </Expression>
+                        </Action>
+                    </ActionSet>
+                </Condition>
+                <Condition>
+                    <Expression>
+                        <Text><![CDATA[<a number> is between <min> and <max>]]></Text>
+                        <Param><![CDATA[1]]></Param>
+                        <Param><![CDATA[5]]></Param>
+                    </Expression>
+                    <Partition DefId="C1">
+                        <Condition>
+                            <Expression>
+                                <Text><![CDATA[<a number> equals <a number>]]></Text>
+                                <Param><![CDATA[0]]></Param>
+                            </Expression>
+                            <Partition DefId="C2">
+                                <Condition>
+                                    <Expression>
+                                        <Text><![CDATA[<a number> is less than <a number>]]></Text>
+                                        <Param/>
+                                    </Expression>
+                                    <ActionSet>
+                                        <Action DefId="A0">
+                                            <Expression>
+                                                <Param><![CDATA["Average"]]></Param>
+                                            </Expression>
+                                        </Action>
+                                    </ActionSet>
+                                </Condition>
+                            </Partition>
+                        </Condition>
+                        <Condition>
+                            <Expression>
+                                <Text><![CDATA[<a number> equals <a number>]]></Text>
+                                <Param><![CDATA[1]]></Param>
+                            </Expression>
+                            <Partition DefId="C2">
+                                <Condition>
+                                    <Expression>
+                                        <Text><![CDATA[<a number> is less than <a number>]]></Text>
+                                        <Param><![CDATA[5]]></Param>
+                                    </Expression>
+                                    <ActionSet>
+                                        <Action DefId="A0">
+                                            <Expression>
+                                                <Param><![CDATA["Poor"]]></Param>
+                                            </Expression>
+                                        </Action>
+                                    </ActionSet>
+                                </Condition>
+                                <Condition>
+                                    <Expression>
+                                        <Text><![CDATA[<a number> is at least <a number>]]></Text>
+                                        <Param><![CDATA[5]]></Param>
+                                    </Expression>
+                                    <ActionSet>
+                                        <Action DefId="A0">
+                                            <Expression>
+                                                <Param><![CDATA["Average"]]></Param>
+                                            </Expression>
+                                        </Action>
+                                    </ActionSet>
+                                </Condition>
+                            </Partition>
+                        </Condition>
+                        <Condition>
+                            <Expression>
+                                <Text><![CDATA[<a number> is more than <a number>]]></Text>
+                                <Param><![CDATA[1]]></Param>
+                            </Expression>
+                            <ActionSet>
+                                <Action DefId="A0">
+                                    <Expression>
+                                        <Param><![CDATA["Poor"]]></Param>
+                                    </Expression>
+                                </Action>
+                            </ActionSet>
+                        </Condition>
+                    </Partition>
+                </Condition>
+                <Condition>
+                    <Expression>
+                        <Text><![CDATA[<a number> is more than <a number>]]></Text>
+                        <Param><![CDATA[5]]></Param>
+                    </Expression>
+                    <Partition DefId="C1">
+                        <Condition>
+                            <Expression>
+                                <Text><![CDATA[<a number> equals <a number>]]></Text>
+                                <Param><![CDATA[0]]></Param>
+                            </Expression>
+                            <ActionSet>
+                                <Action DefId="A0">
+                                    <Expression>
+                                        <Param><![CDATA["Excellent"]]></Param>
+                                    </Expression>
+                                </Action>
+                            </ActionSet>
+                        </Condition>
+                        <Condition>
+                            <Expression>
+                                <Text><![CDATA[<a number> equals <a number>]]></Text>
+                                <Param><![CDATA[1]]></Param>
+                            </Expression>
+                            <Partition DefId="C2">
+                                <Condition>
+                                    <Expression>
+                                        <Text><![CDATA[<a number> is less than <a number>]]></Text>
+                                        <Param><![CDATA[5]]></Param>
+                                    </Expression>
+                                    <ActionSet>
+                                        <Action DefId="A0">
+                                            <Expression>
+                                                <Param><![CDATA["Average"]]></Param>
+                                            </Expression>
+                                        </Action>
+                                    </ActionSet>
+                                </Condition>
+                                <Condition>
+                                    <Expression>
+                                        <Text><![CDATA[<a number> is at least <a number>]]></Text>
+                                        <Param><![CDATA[5]]></Param>
+                                    </Expression>
+                                    <ActionSet>
+                                        <Action DefId="A0">
+                                            <Expression>
+                                                <Param><![CDATA["Excellent"]]></Param>
+                                            </Expression>
+                                        </Action>
+                                    </ActionSet>
+                                </Condition>
+                            </Partition>
+                        </Condition>
+                        <Condition>
+                            <Expression>
+                                <Text><![CDATA[<a number> is more than <a number>]]></Text>
+                                <Param><![CDATA[1]]></Param>
+                            </Expression>
+                            <ActionSet>
+                                <Action DefId="A0">
+                                    <Expression>
+                                        <Param><![CDATA["Poor"]]></Param>
+                                    </Expression>
+                                </Action>
+                            </ActionSet>
+                        </Condition>
+                    </Partition>
+                </Condition>
+                <Condition>
+                    <Expression/>
+                    <ActionSet/>
+                </Condition>
+            </Partition>
+        </Contents>
+    </Body>
+    <Resources DefaultLocale="en_US">
+        <ResourceSet Locale="en_US">
+            <Data Name="Definitions(C0)#HeaderText"><![CDATA[YrsInBusiness]]></Data>
+            <Data Name="Definitions(C1)#HeaderText"><![CDATA[NbrOfBankruptcies]]></Data>
+            <Data Name="Definitions(C2)#HeaderText"><![CDATA[YrsAtCurrAddr]]></Data>
+            <Data Name="Definitions(A0)#HeaderText"><![CDATA[Determine Financial Stability]]></Data>
+        </ResourceSet>
+    </Resources>
+</DT>
+</definition>
+</ilog.rules.studio.model.dt:DecisionTable>

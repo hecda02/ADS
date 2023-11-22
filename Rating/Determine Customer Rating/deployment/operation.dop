@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<com.ibm.rules.studio.model.decisionservice:Operation xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:com.ibm.rules.studio.model.decisionservice="http://com.ibm.rules.studio/model/decisionservice.ecore" rulesetName="operation" targetRuleProjectName="Determine Customer Rating">
+  <name>Determine-Customer-Rating</name>
+  <uuid>6b3edfa6-7a95-4bdb-9f46-6641a9eb4760</uuid>
+  <decisionModel href="../rules/decisionModel.dmo#1b39fd7a-3667-474d-9cf8-421fb4ab0a8d"/>
+  <targetRuleProject href="../../Determine%20Customer%20Rating#30726029-0804-4371-89e9-bf8067143c1c"/>
+</com.ibm.rules.studio.model.decisionservice:Operation>
